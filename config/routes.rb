@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   
   devise_for :admins, controllers: {
-  	sessions:      'admins/sessions'
-  	passwords:     'admin/password'
+  	sessions:      'admins/sessions',
+  	passwords:     'admin/password',
   	registrations: 'admin/registrations'
   }
 
   devise_for :customers, controllers: {
-  	sessions:      'customers/sessions'
-  	passwords:     'customers/passwords'
+  	sessions:      'customers/sessions',
+  	passwords:     'customers/passwords',
   	registrations: 'customers/registrations'
   }
 
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   get '/customers/unsubscribe' => 'customers#unsubscribe'
   patch '/customers/withdraw' => 'customers#withdraw'
   resources :shipping_addresses, except: [:new, :show]
-  recources :cart_items, only: [:create, :index, :update, :destroy]
+  resources :cart_items, only: [:create, :index, :update, :destroy]
   delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :orders, only: [:new, :create, :index, :show]
   post '/orders/confirm' => 'orders#confirm'
