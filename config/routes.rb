@@ -24,7 +24,9 @@ Rails.application.routes.draw do
 
   # customers
   root 'products#top'
-  resources :customers, only: [:show, :edit, :update]
+  get '/customers/my_page' => 'customers#show'
+  get '/customers/edit' => 'customers#edit'
+  patch '/customers' => 'customers#update'
   get '/customers/unsubscribe' => 'customers#unsubscribe'
   patch '/customers/withdraw' => 'customers#withdraw'
   resources :shipping_addresses, except: [:new, :show]
