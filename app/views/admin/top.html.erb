@@ -1,0 +1,13 @@
+<div class="container">
+	 <div class="row">
+	    <div class="col-xs-4 col-xs-offset-3">
+		  <h2>管理者画面</h2>
+		</div>
+	</div>
+	<div class="row">
+	    <div class="col-xs-3">本日の注文件数</div>
+	    <div class="col-xs-9">
+	      <%= link_to @orders.count, admin_orders_path %> 件
+	    </div>
+	</div>
+</div>
