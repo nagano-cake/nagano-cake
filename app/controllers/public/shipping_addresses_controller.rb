@@ -1,4 +1,8 @@
 class Public::ShippingAddressesController < ApplicationController
+
+#ログインユーザーのみ
+ before_action :authenticate_user!
+
 	def index
 		
 	end
