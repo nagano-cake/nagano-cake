@@ -44,9 +44,9 @@
 			    	<th><%= f.label "会員ステータス" %></th>
 			    	<td>
 			    		<%= f.label :delete_flag, "有効" %>
- 						<%= f.check_box :delete_flag, autofocus: true%>
- 						<%= f.label :delete_flag, "" %>
- 						<%= f.check_box :delete_flag, autofocus: true%>
+ 						<%= f.check_box :delete_flag, checked: false%>
+ 						<%= f.label :delete_flag, "退会済み" %>
+ 						<%= f.check_box :delete_flag, checked: true%>
                     </td>
 			    </tr>
 			    <div class="actions">

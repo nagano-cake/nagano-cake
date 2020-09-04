@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  
   has_many :orders
   has_many :shipping_addresses, dependent: :destroy
   has_many :cart_items, dependent: :destroy
@@ -19,4 +19,6 @@ class Customer < ApplicationRecord
 
   enum order_status: {入金待ち:0, 入金確認:1, 製作中:2, 発送準備中:3, 発送済み:4 }
 
+  enum delete_flag: { withdraw: false, validity: true}
+  #退会ステータス
 end
