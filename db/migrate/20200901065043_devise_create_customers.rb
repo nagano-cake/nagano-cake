@@ -34,6 +34,9 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
 
 
       t.timestamps null: false
+      t.string :last_name,              null: false, default: ""
+      t.string :first_name,              null: false, default: ""
+      t.string :telephone_number,              null: false, default: ""
     end
 
     add_index :customers, :email,                unique: true
