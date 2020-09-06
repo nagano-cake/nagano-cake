@@ -43,10 +43,10 @@
 			    <tr>
 			    	<th><%= f.label "会員ステータス" %></th>
 			    	<td>
-			    		<%= f.label :delete_flag, "有効" %>
- 						<%= f.check_box :delete_flag, checked: false%>
- 						<%= f.label :delete_flag, "退会済み" %>
- 						<%= f.check_box :delete_flag, checked: true%>
+ 						<%= f.label :delete_flag, "有効" %>
+				　　　　　<%= f.radio_button :delete_flag, :有効, :checked => (@customer.delete_flag == "有効") %>
+				　　　　　<%= f.label :delete_flag, "退会済み" %>
+				　　　　　<%= f.radio_button :delete_flag, :退会済み, :checked => (@customer.delete_flag == "無効") %>
                     </td>
 			    </tr>
 			    <div class="actions">
