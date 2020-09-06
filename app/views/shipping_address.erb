@@ -1,0 +1,78 @@
+<h2>配送先/一覧</h2>
+<%= form_for (@shipping_address) do |f| %>
+<table class="table table-bordered">
+    <tr>
+        <th>郵便番号</th>
+        <td>
+            <%= f.text_field :postal_code %>
+        </td>
+    </tr>
+    <tr>
+        <th>住所</th>
+        <td>
+            <%= f.text_field :address, style: "width: 80%;" %>
+        </td>
+    </tr>
+    <tr>
+        <th>電話番号</th>
+        <td>
+            <%= f.text_field :phone %>
+        </td>
+    </tr>
+    <tr>
+        <th>姓/名</th>
+        <td>
+            <%= f.text_field :last_name %>/
+            <%= f.text_field :first_name %>
+        </td>
+    </tr>
+    <tr>
+        <th>セイ/メイ</th>
+        <td>
+            <%= f.text_field :last_name_kana %>/
+            <%= f.text_field :first_name_kana %>
+        </td>
+    </tr>
+</table>
+<%= f.submit "登録する", class:"btn btn-primary btn-md" %>
+<% end %>
+
+<table class="table table-bordered" style="margin-top: 20px;">
+    <thead>
+        <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>電話番号</th>
+            <th>宛名</th>
+            <th>あてな</th>
+            <th></th>
+        </tr>
+    </thead>
+    <% @shipping_addresses.each do |shipping_address| %>
+    <tbody>
+        <tr>
+            <td>
+                <%= shipping_address.postal_code %>
+            </td>
+            <td>
+                <%= shipping_address.address %>
+            </td>
+            <td>
+                <%= shipping_address.phone %>
+            </td>
+            <td>
+                <%= shipping_address.last_name %>
+                <%= shipping_address.first_name %>
+            </td>
+            <td>
+                <%= shipping_address.last_name_kana %>
+                <%= shipping_address.first_name_kana %>
+            </td>
+            <td>
+                <%= link_to "編集する", edit_shipping_address_path(shipping_address), class:"btn btn-primary btn-md" %>
+                <%= link_to "削除する", ship_to_address_path(shipping_address), class:"btn btn-danger btn-md", method: :delete %>
+            </td>
+        </tr>
+    </tbody>
+    <% end %>
+</table>
