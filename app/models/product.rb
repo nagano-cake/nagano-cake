@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-	# enum status: { 販売中: false, 販売中止: true}
+	validates :status, inclusion: {in: [販売中止: true, 販売中: false]}
 	attachment :image
 	has_many :carts_items
 	has_many :products
