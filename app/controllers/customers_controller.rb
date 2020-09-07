@@ -1,4 +1,4 @@
-class Public::CustomersController < ApplicationController
+class CustomersController < ApplicationController
 
 	def show
 	  @customer = Customer.find(current_customer.id)
