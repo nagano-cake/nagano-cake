@@ -17,6 +17,7 @@ class Public::OrdersController < ApplicationController
 
 	def show
 	  @order = Order.find(params[:id])
+	  @order_informations = @order.order_information
 	end
 
 	def complete
