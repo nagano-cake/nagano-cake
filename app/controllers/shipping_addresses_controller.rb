@@ -1,4 +1,4 @@
-class Public::ShippingAddressesController < ApplicationController
+class ShippingAddressesController < ApplicationController
 
 #ログインユーザーのみ
  before_action :authenticate_user!
