@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
+	before_action :authenticate_customer!
+	before_action :set_customer
 
 	def new
-	  @shipping_address = current_customer.shipping_address
-	  @shipping_address = ShippingAddress.new
+	  @order = Order.new
 	end
 
 	def confirm
@@ -13,6 +14,7 @@ class OrdersController < ApplicationController
 
 	def index
 	  @orders = Order.where(customer_id: current_customer.id)
+	  # @orders = @customer.orders
 	end
 
 	def show
@@ -21,6 +23,15 @@ class OrdersController < ApplicationController
 	end
 
 	def complete
+	end
+
+	private
+	def set_customer
+	  @customer = current_customer
+	end
+
+	def order_params
+	  params.require(:order).permit(:postage, :billing, :payment_method, :name, :address, :post_code, :status, :created_at)
 	end
 
 end
