@@ -4,7 +4,7 @@
     <tr>
         <th>郵便番号</th>
         <td>
-            <%= f.text_field :postal_code %>
+            <%= f.text_field :post_code %>
         </td>
     </tr>
     <tr>
@@ -16,7 +16,7 @@
     <tr>
         <th>電話番号</th>
         <td>
-            <%= f.text_field :phone %>
+            <%= f.text_field :telephone_number %>
         </td>
     </tr>
     <tr>
@@ -52,13 +52,13 @@
     <tbody>
         <tr>
             <td>
-                <%= shipping_address.postal_code %>
+                <%= shipping_address.post_code %>
             </td>
             <td>
                 <%= shipping_address.address %>
             </td>
             <td>
-                <%= shipping_address.phone %>
+                <%= shipping_address.telephone_number %>
             </td>
             <td>
                 <%= shipping_address.last_name %>
@@ -70,7 +70,7 @@
             </td>
             <td>
                 <%= link_to "編集する", edit_shipping_address_path(shipping_address), class:"btn btn-primary btn-md" %>
-                <%= link_to "削除する", ship_to_address_path(shipping_address), class:"btn btn-danger btn-md", method: :delete %>
+                <%= link_to "削除する", shipping_address_path(shipping_address), class:"btn btn-danger btn-md", method: :delete %>
             </td>
         </tr>
     </tbody>
