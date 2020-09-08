@@ -1,0 +1,26 @@
+<h2>ショッピングカート</h2>
+
+<div>
+<%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+	  <th>単価（税込）</th>
+	  <th>数量</th>
+	  <th>小計</th>
+	  <th></th>
+    </tr>
+  </thead>
+
+  <% @customer.cart_items.each do |f| %>
+   
+   <tr>
+
+   </tr>
+
+  <% end %>
+
+</table>
