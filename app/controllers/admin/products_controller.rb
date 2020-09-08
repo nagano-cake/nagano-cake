@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+	# before_action :authenticate_admin!
 	def new
 		@product = Product.new
     end
@@ -17,10 +18,11 @@ class Admin::ProductsController < ApplicationController
 
     def create
 	    @product = Product.new(product_params)
-		if  @product.save
+		if  @product.save!
 		    flash[:notice] = 'Product was successfully created.'
 		    redirect_to admin_product_path(@product)
 	    else
+	    	flash[:notice] = 'Product was not successfully created.'
 	    	render :new
 	    end
 	end

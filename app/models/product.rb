@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-	validates :status, inclusion: {in: [販売中止: true, 販売中: false]}
+	validates :status, inclusion: {in: [true, false]}
 	attachment :image
 
 	has_many :carts_items
