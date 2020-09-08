@@ -1,12 +1,12 @@
 class ShippingAddressesController < ApplicationController
 
 #ログインユーザーのみ
- before_action :authenticate_user!
+ #before_action :authenticate_customer!
 
 	def index
-		@customer = current_user
+		@customer = current_customer
 		@shipping_addresses = @customer.shipping_address
-  		@shipping_address = ShippingAddress.new
+  		@shipping_address = ShippingAddress.newx
 	end
 
 	def edit
@@ -19,7 +19,7 @@ class ShippingAddressesController < ApplicationController
 		@shipping_addresses = current_customer.shipping_address
 		if
  		@shipping_address.save
-		lash.now[:notice] = "新規配送先を登録しました"
+		flash.now[:notice] = "新規配送先を登録しました"
 		end
 	end
 
@@ -43,6 +43,6 @@ class ShippingAddressesController < ApplicationController
 end
 
 private
-	def ship_to_address_params
+	def shipping_address_params
 		params.require(:shiping_address).permit(:user_id, :destination, :address, :post_code)
 	end
