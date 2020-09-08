@@ -2,15 +2,22 @@
 <html>
   <head>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
   </head>
-
   <body>
-    <main>
-      <%= yield %>
-    </main>
+    <%= render 'layouts/header' %>
+    
+    <div class='body'>
+      <main>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>
+
+<style>
+  body { padding-top: 70px; }
+</style>
+

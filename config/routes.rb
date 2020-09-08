@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   # customers
   root 'products#top'
+  get "customers/about"
   get '/customers/my_page' => 'customers#show'
   get '/customers/edit' => 'customers#edit'
   patch '/customers' => 'customers#update'
