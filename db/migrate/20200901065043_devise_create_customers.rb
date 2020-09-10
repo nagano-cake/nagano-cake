@@ -15,11 +15,11 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.datetime :remember_created_at
 
       ## Trackable
-      # t.integer  :sign_in_count, default: 0, null: false
-      # t.datetime :current_sign_in_at
-      # t.datetime :last_sign_in_at
-      # t.string   :current_sign_in_ip
-      # t.string   :last_sign_in_ip
+      t.integer  :sign_in_count, default: 0, null: false
+      t.datetime :current_sign_in_at
+      t.datetime :last_sign_in_at
+      t.string   :current_sign_in_ip
+      t.string   :last_sign_in_ip
 
       ## Confirmable
       # t.string   :confirmation_token
@@ -34,13 +34,13 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
 
 
       t.timestamps null: false
-      t.string :last_name,              null: false, default: ""
-      t.string :first_name,              null: false, default: ""
-      t.string :telephone_number,              null: false, default: ""
-      t.string :post_code,              null: false, default: ""
-      t.string :address,              null: false, default: ""
-      t.string :last_name_kana,              null: false, default: ""
-      t.string :first_name_kana,              null: false, default: ""
+      t.string :last_name, null: false, default: ""
+      t.string :first_name, null: false, default: ""
+      t.string :address, null: false, default: ""
+      t.string :post_code, null: false, default: ""#７文字の整数であるか
+      t.string :telephone_number, null: false, default: ""#半角数字
+      t.string :first_name_kana,  null: false, default: ""
+      t.string :last_name_kana, null: false, default: ""
     end
 
     add_index :customers, :email,                unique: true

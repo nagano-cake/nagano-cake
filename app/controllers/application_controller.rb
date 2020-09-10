@@ -3,19 +3,32 @@ class ApplicationController < ActionController::Base
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :telephone_number, :post_code, :address])
   end
 
-  def after_sign_in_path_for(_resource)
-    root_admin_path
+  def after_sign_in_path_for(resource)
+    if customer_signed_in?
+       root_path
+    else
+       admin_root_path
+    end
   end
 
   def after_sign_up_path_for(resource)
-    root_admin_path
+    if customer_signed_in?
+       root_path
+    else
+       admin_root_path
+    end
   end
 
-  def after_sign_out_for(_resource)
-     new_admin_session_path
+  def after_sign_out_for(resource)
+    if customer_signed_out?
+       new_customer_session_path(resource)
+    else
+       admin_session_path(resource)
+    end
   end
 end
+
 

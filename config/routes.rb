@@ -2,19 +2,19 @@ Rails.application.routes.draw do
 
   devise_for :admin, controllers: {
     sessions:      'admin/sessions',
-    passwords:     'admin/password',
-    registrations: 'admin/registrations'
+    passwords:     'admin/passwords',
+    registrations: 'admin/registrations',
   }
 
   devise_for :customers, controllers: {
     sessions:      'customers/sessions',
     passwords:     'customers/passwords',
-    registrations: 'customers/registrations'
+    registrations: 'customers/registrations',
   }
 
   # admin
   namespace :admin do
-    root 'top#top'
+    root 'tops#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update]
     resources :products, except: [:destroy]
