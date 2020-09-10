@@ -1,30 +1,33 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <nav class='nav navbar-nav navbar-left' >
+    <nav class='nav navbar-nav navbar-left navbar-white bg-white' >
       <h2>LOGO</h2>
     </nav>
     <nav>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right navbar-white bg-white">
         <% if customer_signed_in? %>
-          <li><%= link_to ' マイページ',customers_my_page_path(current_customer),class: 'glyphicon glyphicon-home home' %></li>
-          <li><%= link_to ' 商品一覧',products_path,class: 'glyphicon glyphicon-user users' %></li>
-          <li><%= link_to ' カート',cart_items_path ,class: 'glyphicon glyphicon-book books'%></li>
-          <li><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete,class: 'glyphicon glyphicon-log-out logout' %></li>
-        <% else %>
-          <li><%= link_to ' About',customers_about_path,class: 'glyphicon glyphicon-home home' %></li>
-          <li><%= link_to ' 商品一覧',products_path,class: 'glyphicon glyphicon-link about' %></li>
-          <li><%= link_to ' 新規登録', new_customer_registration_path,class: 'glyphicon glyphicon-edit sign_up' %></li>
-          <li><%= link_to ' ログイン', new_customer_session_path ,class: 'glyphicon glyphicon-log-in sign_in'%></li>
-        <% end %>
-
-        <% if admin_signed_in? %>
-          <li><%= link_to ' 商品一覧',admin_products_path,class: 'glyphicon glyphicon-home home' %></li>
-          <li><%= link_to ' 会員一覧',admin_customer_path,class: 'glyphicon glyphicon-user users' %></li>
-          <li><%= link_to ' 注文履歴一覧',admin_orders_path ,class: 'glyphicon glyphicon-book books'%></li>
-          <li><%= link_to ' ジャンル一覧',admin_genres_path,class: 'glyphicon glyphicon-log-out logout' %></li>
-          <li><%= link_to ' ログアウト',destroy_admin_session_path, method: :delete,class: 'glyphicon glyphicon-log-out logout' %></li></br>
-          <li><%= text_field_tag (:word) %></li>
+          　<li>
+              <span>ようこそ、</span>
+              <%= current_customer.last_name %>
+              <span>さん!</span>
+            </li>
+            <li><%= link_to ' マイページ',customers_my_page_path(current_customer) %></li>
+            <li><%= link_to ' 商品一覧',products_path %></li>
+            <li><%= link_to ' カート', cart_items_path %></li>
+            <li><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete %></li>
+        <% elsif admin_signed_in? %>
+            <li><%= link_to ' 商品一覧',admin_products_path %></li>
+            <li><%= link_to ' 会員一覧',admin_customers_path %></li>
+            <li><%= link_to ' 注文履歴一覧',admin_orders_path %></li>
+            <li><%= link_to ' ジャンル一覧',admin_genres_path %></li>
+            <li><%= link_to ' ログアウト',destroy_admin_session_path %></li></br>
+            <li><%= text_field_tag (:word) %></li>
        　　<li><%= submit_tag "検索" %></li>
+        <% else %>
+            <li><%= link_to ' About',customers_about_path %></li>
+            <li><%= link_to ' 商品一覧',products_path %></li>
+            <li><%= link_to ' 新規登録', new_customer_registration_path %></li>
+            <li><%= link_to ' ログイン', new_customer_session_path %></li>
         <% end %>
       </ul>
     </nav>
