@@ -25,8 +25,9 @@ Rails.application.routes.draw do
   # customers
   root 'products#top'
   get "customers/about"
+  # resource :customers, only:[:update]
   get '/customers/my_page' => 'customers#show'
-  get '/customers/edit' => 'customers#edit'
+  get '/customer/edit' => 'customers#edit'
   patch '/customers' => 'customers#update'
   get '/customers/unsubscribe' => 'customers#unsubscribe'
   patch '/customers/withdraw' => 'customers#withdraw'

@@ -22,7 +22,7 @@
 
   <% @customer.cart_items.each do |cart_item| %>
    <td><%= cart_item.product.name %></td>
-   <td><%= cart_item.product.price_with_tax %>円</td>
+   <td><%= price_include_tax(cart_item.product.price) %>円</td>
    <td>
       <%= form_for cart_item do |f| %>
         <div>
@@ -31,7 +31,7 @@
         </div>
       <% end %>
     </td>
-    <td><%= cart_item.subtotal_price %>円</td>
+    <td><%= cart_item.shoukei %>円</td>
     <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete %></td>
   <% end %>
 
@@ -39,7 +39,7 @@
 
 
 <div>
-  <div><%= link_to "買い物を続ける", homes_top_path %></div>
+  <div><%= link_to "買い物を続ける", root_path %></div>
   <div>
    <table>
     <th>合計金額</th>

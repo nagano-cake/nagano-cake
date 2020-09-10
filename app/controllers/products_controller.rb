@@ -2,12 +2,12 @@ class ProductsController < ApplicationController
 
 	def top
 		@genres = Genre.all
-		@products = Product.all
+		@products = Product.first(5)
 	end
 
 	def index
 		@genres = Genre.all
-		@products = Product.where(status: true).page(params[:page]).per(8)
+		@products = Product.where(status: false).page(params[:page]).per(8)
 	end
 
 	def show
@@ -18,6 +18,6 @@ class ProductsController < ApplicationController
 
 private
 	def product_params
-		parmas.require(:product).permit(:name ,:iamge, :text, :price, :status)
+		parmas.require(:product).permit(:genre_id, :name ,:iamge, :text, :price, :status)
 	end
 end

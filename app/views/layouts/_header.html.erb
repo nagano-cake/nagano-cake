@@ -11,7 +11,7 @@
               <%= current_customer.last_name %>
               <span>さん!</span>
             </li>
-            <li><%= link_to ' マイページ',customers_my_page_path(current_customer) %></li>
+            <li><%= link_to ' マイページ',customers_my_page_path %></li>
             <li><%= link_to ' 商品一覧',products_path %></li>
             <li><%= link_to ' カート', cart_items_path %></li>
             <li><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete %></li>

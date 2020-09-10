@@ -1,4 +1,5 @@
-<% if product.genre.valid_flag == true %>
+<% products.each do |product| %>
+<% if product.genre.vaild_flag == true %>
 <div class="product-container">
     <%= link_to product_path(product.id), class: "btn-link" do %>
     <div id="img_field" class="product">
@@ -15,5 +16,6 @@
     <% elsif product.status == false %>
     <p class="soldout">売り切れ中</p>
     <% end %>
+  <% end %>
 </div>
 <% end %>
