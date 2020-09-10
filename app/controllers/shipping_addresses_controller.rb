@@ -1,48 +1,35 @@
 class ShippingAddressesController < ApplicationController
 
-#ログインユーザーのみ
- #before_action :authenticate_customer!
-
 	def index
-		@customer = current_customer
-		@shipping_addresses = @customer.shipping_address
-  		@shipping_address = ShippingAddress.newx
-	end
+  		@address = ShippingAddress.new
+  		@addresses = current_customer.shipping_addresses.page(params[:page]).per(3) # ページネーションの追加/3件ごとにページ作成
+  	end
 
-	def edit
-		@shipping_address = ShippingAddress.find(params[:id])
-	end
+  	def create
+  		@address = ShippingAddress.new(address_params)
+  		@address.costomer_id = current_customer.id
+  		@address.save
+  		redirect_to shipping_addresses_path
+  	end
 
-	def create
-		@shipping_address = ShippingAddress.new(shipping_address_params)
-		@shipping_address.customer_id = current_customer.id
-		@shipping_addresses = current_customer.shipping_address
-		if
- 		@shipping_address.save
-		flash.now[:notice] = "新規配送先を登録しました"
-		end
-	end
+  	def edit
+  		@address = ShippingAddress.find(params[:id])
+  	end
 
-	def update
-		@shipping_address = ShippingAddress.find(params[:id])
-	 if
-	 	@shipping_address.update(shipping_address_params)
-		flash[:success] = "配送先を変更しました"
-		redirect_to shipping_addresses_path
-	else
-		render "edit"
-	 end
-	end
+  	def update
+  		@address = ShippingAddress.find(params[:id])
+  		@address.update(shipping_address_params)
+  		redirect_to shipping_addresses_path
+  	end
 
-	def destroy
-		@shipping_address = ShippingAddress.find(params[:id])
-		@shipping_address.destroy
-		@shipping_addresses = current_customer.shipping_address
-		flash.now[:alert] = "配送先を削除しました"
-	end
+  	def destroy
+  		@address = ShippingAddress.find(params[:id])
+  		@address.destroy
+  		redirect_to sihpping_addresses_path
+  	end
+
+  private
+  	def shipping_address_params
+  		params.require(:shipping_address).permit(:name, :customer_id, :shipping_address, :post_code)
+  	end
 end
-
-private
-	def shipping_address_params
-		params.require(:shiping_address).permit(:user_id, :destination, :address, :post_code)
-	end

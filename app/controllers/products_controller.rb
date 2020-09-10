@@ -1,19 +1,9 @@
 class ProductsController < ApplicationController
 
-def top
+	def top
 		@genres = Genre.all
-
-	if params[:genre_id]
-  		# urlにgenre_id(params)がある場合
-	   genre = Genre.find(params[:genre_id])
-  	   @products = genre.products
-
-  	else
-  		@products = Product.all
-  		 # genre_idが無いなら投稿すべてを取得
+		@products = Product.all
 	end
-
-end
 
 	def index
 		@genres = Genre.all
@@ -21,8 +11,9 @@ end
 	end
 
 	def show
-		@genres = Genre.all
-		@product = Product.find(params[:id])
+		@products = Product.all
+ 		@product = Product.find(params[:id])
+    	@cart_item = CartItem.new
 	end
 
 private

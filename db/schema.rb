@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_102907) do
     t.string "first_name_kana", default: "", null: false
     t.string "last_name_kana", default: "", null: false
     t.boolean "delete_flag"
+
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -90,7 +91,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_102907) do
   create_table "products", force: :cascade do |t|
     t.integer "genre_id", null: false
     t.string "name", null: false
-    t.string "image_id"
+    t.string "image_id", null: false
     t.text "text", null: false
     t.integer "price", null: false
     t.boolean "status", default: true, null: false

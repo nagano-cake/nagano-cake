@@ -1,0 +1,19 @@
+<% if product.genre.valid_flag == true %>
+<div class="product-container">
+    <%= link_to product_path(product.id), class: "btn-link" do %>
+    <div id="img_field" class="product">
+        <%= attachment_image_tag(product, :image, size: "100x100", fallback: "no_image.jpg") %>
+    </div>
+    <p class="products-name">
+        <%= product.name %>
+    </p>
+    <% end %>
+    <% if product.status == true %>
+    <p>¥
+        <%= product.price %>
+    </p>
+    <% elsif product.status == false %>
+    <p class="soldout">売り切れ中</p>
+    <% end %>
+</div>
+<% end %>
