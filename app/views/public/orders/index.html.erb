@@ -18,11 +18,15 @@
 		   <% @orders.each do |order| %>
 			<tr>
 			  <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-			  <td><%= order.address %></td>
+			  <td>
+			  	<%= order.post_code %>
+			  	<%= order.address %>
+			  	<%= order.name %>
+			  </td>
 
-		   <%= order.order_infomations.each do |f|　%>
-			  <td><%= f. %></td>
-		   <% end %>
+		     <%= order.order_infomations.each do |order_information|　%>
+			  <td><%= order.information.product.name %></td>
+		     <% end %>
 
 			  <td><%= order.billing %></td>
 			  <td><%= order.status %></td>
