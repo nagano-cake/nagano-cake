@@ -11,9 +11,9 @@
                 </span>
             </h2>
             <div class="clearfix product-box">
-                <% @products.each do |product| %>
-                <%= render "status", product: product %>
-                <% end %>
+                
+                <%= render "status", products: @products %>
+
             </div>
             <div class="page">
                 <%= paginate(@products) %>

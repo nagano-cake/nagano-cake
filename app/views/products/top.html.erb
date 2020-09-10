@@ -11,10 +11,10 @@
                 </p>
             </div>
             <h2 class="recommend">オススメ商品</h2>
-            <% @products.first(5). each do |product| %>
+            
             <!-- ランダムに4つ表示できる？ -->
-            <%= render "status", product: product %>
-            <% end %>
+            <%= render "status", products: @products %>
+            
             <div class="col-xs-12">
                 <%= link_to "もっと見る", products_path, class: "btn-link" %>
             </div>

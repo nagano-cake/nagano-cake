@@ -5,9 +5,9 @@
 	    	<%= form_for(@genre, url:admin_genres_path) do |f| %>
 			    <%= f.label "ジャンル" %>
 			    <%= f.text_field :name %>
- 				<%= f.radio_button :vaild_flag, :有効, checked: true %>
+ 				<%= f.radio_button :vaild_flag, :true %>
 		        <%= f.label :vaild_flag, "有効" %>
-		        <%= f.radio_button :vaild_flag, :無効, checked: false %>
+		        <%= f.radio_button :vaild_flag, :false %>
 		        <%= f.label :vaild_flag, "無効" %>
 			    <%= f.submit '追加', class:"btn btn-info btn-md" %>
 			    </div>
@@ -27,7 +27,7 @@
 					<tr>
 						<td><%= genre.name %></td>
 						<td>
-							<% if genre.vaild_flag == "有効" %>
+							<% if genre.vaild_flag == true %>
 			                  有効
 			                <% else %>
 			                  無効

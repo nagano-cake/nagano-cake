@@ -6,7 +6,7 @@ class Product < ApplicationRecord
 	has_many :order_informations
 	belongs_to :genre
 
-	enum status: {販売中:0,販売停止:1}
+	# enum status: {販売中:0,販売停止:1}
 
 	validates :status, inclusion: {in: [true, false]}
 end

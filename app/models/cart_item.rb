@@ -7,8 +7,15 @@ class CartItem < ApplicationRecord
 	validates :count, numericality: { only_integer: true }
 
     # 金額計算(小計)
-	def subtotal_price
-		(count * product.price * Constants::TAX).round
+	def shoukei
+		cart_item.product.price*cart_item.count
 	end
 
+	def goukei
+		sum=0
+			cart_item.shoukei.each do |shoukei|
+			sum += cart_item.shoukei
+			end
+		sum
+	end
 end

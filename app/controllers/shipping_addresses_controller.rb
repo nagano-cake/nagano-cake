@@ -1,6 +1,7 @@
 class ShippingAddressesController < ApplicationController
+    before_action :authenticate_customer!
 
-	def index
+	  def index
   		@address = ShippingAddress.new
   		@addresses = current_customer.shipping_addresses.page(params[:page]).per(3) # ページネーションの追加/3件ごとにページ作成
   	end

@@ -1,5 +1,5 @@
 class AddDeleteFlagToCustomers < ActiveRecord::Migration[5.2]
   def change
-    add_column :customers, :delete_flag, :boolean
+    add_column :customers, :delete_flag, :boolean, default: true
   end
 end
