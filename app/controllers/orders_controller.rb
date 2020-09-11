@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
 	  if current_customer.cart_items.exists?
 	  	@order = Order.new(order_params)
 	  	@order.customer_id = current_customer.id
+	  	@shipping_address = @customer.shipping_address
 
 	  	# 住所
 	  	@add = params[:order][:add].to_i
@@ -20,11 +21,11 @@ class OrdersController < ApplicationController
 	  	  	@order.name = @customer.name
 	  	  when 2
 	  	  	@order.post_code = params[:order][:post_code]
-	  	  	@order.address = params[:order][:address]
+	  	  	@order.address = params[:shipping_address][:address]
 	  	  	@order.name = params[:order][:name]
 	  	  when 3
 	  	  	@order.post_code = params[:order][:post_code]
-	  	  	@order.address = params[:order][:address]
+	  	  	@order.address = params[:order][:shipping_address]
 	  	  	@order.name = params[:order][:name]
 	  	end
 	  	@order.save

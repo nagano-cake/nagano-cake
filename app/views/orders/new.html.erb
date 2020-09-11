@@ -31,12 +31,12 @@
     <div class="row">
 	   <%= f.radio_button :add, 2 %>
 	   <%= f.label :登録済住所 %>
-	   <%= f.collection_select :address, @customer.address %>
+	   <%= f.collection_select(:shipping_address, @shipping_address) %>
 	</div>
 
 	<!-- 新しいお届け先 -->
 	<div class="row">
-	   <%= f.radio_button :add, 3, %>
+	   <%= f.radio_button :add, 3 %>
 	   <%= f.label :新しいお届け先 %>
 	</div>
 

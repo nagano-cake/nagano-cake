@@ -1,52 +1,55 @@
 <div class="container">
 	 <div class="row">
 	    <div class="col-xs-4 col-xs-offset-2">
-	    	<h2><% @customers.first_name @customers.last_name %>さんの会員情報編集</h2>
+	    	<p><%= @customer.last_name %>
+	    		<%= @customer.first_name %>さんの会員情報編集
+	    	</p>
 	    </div>
 	</div>
 	<div class="row">
 		<div class="col-xs-6 col-xs-offset-2">
 			<table class = table >
 				<tr>
-			        <th class="col-xs-2"><%= f.label "会員ID" %></th>
-			        <td class="col-xs-10"><%= @customer.id %></td>
+			        <th><p>顧客ID</p></th>
 			        <td>
+			           <%= @customer.id %>
 			        	<% if @customer.delete_flag == "false" %>
-			                <div>有効会員</div>
+			                <p >有効会員</p>
 			              <% else %>
-			                <div>退会済み</div>
+			                <p>退会済み</p>
 			            <% end %>
+			        </td>
 			    </tr>
 			    <tr>
-			        <th><%= f.label "氏名" %></th>
+			        <th><p>氏名</p></th>
 			        <td>
-					    <%= @customers.first_name　@customers.last_name %>
+					    <%= @customer.last_name %><%= @customer.first_name %>
 				    </td>
 			    </tr>
 			    <tr>
-			        <th><%= f.label "フリガナ" %></th>
+			        <th><p>フリガナ</p></th>
 			        <td>
-				        <%= @customers.first_name_kana　@customers.last_name_kana %>
+				        <%= @customer.last_name_kana %><%= @customer.first_name_kana %>
 			        </td>
 			    </tr>
-			        <th><%= f.label "郵便番号" %></th>
-			        <td><%= @customers.postal_code %></td>
+			        <th><p>郵便番号</p></th>
+			        <td><%= @customer.post_code %></td>
 			    </tr>
 			    <tr>
-			        <th><%= f.label "住所" %></th>
-			        <td><%= @customers.adres %></td>
+			        <th><p>住所</p></th>
+			        <td><%= @customer.address %></td>
 			    </tr>
 			    <tr>
-			        <th><%= f.label "電話番号" %></th>
-			        <td><%= @customers.phone_number %></td>
+			        <th><p>電話番号</p></th>
+			        <td><%= @customer.telephone_number %></td>
 			    </tr>
 			    <tr>
-			        <th><%= f.label "メールアドレス" %></th>
-			        <td><%= @customers.email %></td>
+			        <th><p>メールアドレス</p></th>
+			        <td><%= @customer.email %></td>
 			    </tr>
 			    <tr>
-			    	<th><%= link_to '編集する', admin_edit_customer_path(@customers)%></th>
-			    	<th><%= link_to '注文履歴一覧を見る', admin_customer_path(@customers)%></th>
+			    	<th><%= link_to '編集する', edit_admin_customer_path(@customer) %></th>
+			    	<th><%= link_to '注文履歴一覧を見る', admin_customer_path(@customer) %></th>
 			    </tr>
 			</table>
 		</div>
