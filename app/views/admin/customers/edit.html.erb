@@ -3,14 +3,15 @@
 	    <div class="col-xs-4 col-xs-offset-2">
 	    	<h2>会員編集画面</h2>
 	    </div>
-	</div>
-	<div class="row">
+	 </div>
+	 <div class="row">
 		<div class="col-xs-6 col-xs-offset-2">
 			<table class = table >
 				<tr>
-			        <th class="col-xs-2"><%= f.label "会員ID" %></th>
-			        <td class="col-xs-10"><%= @customer.id %></td>
+			        <th><p>会員ID</p></th>
+			        <td><%= @customer.id %></td>
 			    </tr>
+			    <%= form_for(@customer, url: admin_customer_path) do |f| %>
 			    <tr>
 			        <th><%= f.label "氏名" %></th>
 			        <td>
@@ -26,7 +27,7 @@
 			        </td>
 			    </tr>
 			        <th><%= f.label "郵便番号" %></th>
-			        <td><%= f.text_field :postal_code %></td>
+			        <td><%= f.text_field :post_code %></td>
 			    </tr>
 			    <tr>
 			        <th><%= f.label "住所" %></th>
@@ -34,7 +35,7 @@
 			    </tr>
 			    <tr>
 			        <th><%= f.label "電話番号" %></th>
-			        <td><%= f.text_field :phone_number %></td>
+			        <td><%= f.text_field :telephone_number %></td>
 			    </tr>
 			    <tr>
 			        <th><%= f.label "メールアドレス" %></th>
@@ -49,10 +50,11 @@
 				　　　　　<%= f.radio_button :delete_flag, :退会済み, :checked => (@customer.delete_flag == "無効") %>
                     </td>
 			    </tr>
+			    </table>
 			    <div class="actions">
                     <%= f.submit "変更を保存する" %>
                 </div>
-			</table>
+             <% end %>
 		</div>
 	</div>
 </div>

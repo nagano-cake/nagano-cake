@@ -3,6 +3,7 @@ class CartItemsController < ApplicationController
 
   def index
     @customer = Customer.find(current_customer.id)
+    @cart_items = @customer.cart_items
   end
 
   def create
@@ -29,8 +30,7 @@ class CartItemsController < ApplicationController
   end
 
   def destroy_all
-    customer = Customer.find(current_customer.id)
-    if customer.cart_items.destroy_all
+    if current_customer.cart_items.destroy_all
        redirect_to cart_items_path
     else
       render :index

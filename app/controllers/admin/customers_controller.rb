@@ -5,18 +5,18 @@ class Admin::CustomersController < ApplicationController
 	end
 
 	def show
-		@customers = Customer.find(params[:id])
+		@customer = Customer.find(params[:id])
 	end
 
 	def edit
-		@customers = Customer.find(params[:id])
+		@customer = Customer.find(params[:id])
 	end
 
 	def update
-		customers = Customer.find(params[:id])
-		customers.update(customers_params)
+		@customer = Customer.find(params[:id])
+		@customer.update(customer_params)
         flash[:notice] = 'customers was successfully updated.'
-        redirect_to admin_customer_path(customers)
+        redirect_to admin_customers_path
 	end
 
 	# def delete_flag
@@ -30,7 +30,7 @@ class Admin::CustomersController < ApplicationController
 
 private
  def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :phone_number, :encrypted_password, :delete_flag)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :telephone_number, :encrypted_password, :delete_flag)
   end
 end
 #モデルが決まってから書く
