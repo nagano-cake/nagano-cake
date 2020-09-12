@@ -4,4 +4,8 @@ class ShippingAddress < ApplicationRecord
 
 	validates :customer_id, :destination, :address, presence: true
 	validates :post_code, length: {is: 7}, numericality: { only_integer: true }
+
+  	def shipping_information
+      self.post_code + " " + self.address + " " + self.destination
+    end
 end

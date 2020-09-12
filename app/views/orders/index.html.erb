@@ -24,9 +24,11 @@
 			  	<%= order.name %>
 			  </td>
 
-		     <%= order.order_infomations.each do |order_information|　%>
-			  <td><%= order.information.product.name %></td>
-		     <% end %>
+			 <td>
+		        <% order.order_informations.each do |order_information| %>
+			      <%= order_information.product.name %><br>
+		        <% end %>
+		     </td>
 
 			  <td><%= order.billing %></td>
 			  <td><%= order.status %></td>
