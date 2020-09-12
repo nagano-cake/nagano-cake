@@ -3,13 +3,15 @@
     <nav class='nav navbar-nav navbar-left navbar-white bg-white' >
       <h2>LOGO</h2>
     </nav>
-    <nav>
+    <nav class="nav-box">
       <ul class="nav navbar-nav navbar-right navbar-white bg-white">
         <% if customer_signed_in? %>
           　<li>
-              <span>ようこそ、</span>
+             <p class="name">
+              ようこそ、
               <%= current_customer.last_name %>
-              <span>さん!</span>
+              さん!
+             </p>
             </li>
             <li><%= link_to ' マイページ',customers_my_page_path %></li>
             <li><%= link_to ' 商品一覧',products_path %></li>
@@ -20,7 +22,7 @@
             <li><%= link_to ' 会員一覧',admin_customers_path %></li>
             <li><%= link_to ' 注文履歴一覧',admin_orders_path %></li>
             <li><%= link_to ' ジャンル一覧',admin_genres_path %></li>
-            <li><%= link_to ' ログアウト',destroy_admin_session_path %></li></br>
+            <li><%= link_to ' ログアウト',destroy_admin_session_path, method: :delete %></li></br>
             <li><%= text_field_tag (:word) %></li>
        　　<li><%= submit_tag "検索" %></li>
         <% else %>
