@@ -4,7 +4,6 @@
    	<h2>注文情報確認</h2>
    </div>
 
-   <%= form_with(model: @order, local: true) do |f| %>
 
    <div class="row">
    	 <div class="col-xs-8">
@@ -20,10 +19,10 @@
 
    	  	<tbody>
    	  	  <% sum = 0 %>
-   	      <%= @cart_items.each do |cart_item| %>
+   	      <% @cart_items.each do |cart_item| %>
    	  	  <tr>
    	  	  	<td>
-   	  	  	  <%= attachment_image_tag(cart_item.product, :image, :fill, 100, 100, fallback: "no-image.jpg") %>
+   	  	  	  <%= attachment_image_tag(cart_item.product, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
    	  	  	  <%= cart_item.product.name %>
    	  	    </td>
    	  	    <td>
@@ -33,8 +32,9 @@
    	  	      <%= cart_item.count %>
    	  	    </td>
    	  	    <td>
+               <% sum_product = price_include_tax(cart_item.product.price).to_i * cart_item.count %>
    	  	      <%= price_include_tax(cart_item.product.price).to_i * cart_item.count %>円
-   	  	      <% sum += sum_product %>
+                <% sum += sum_product %>
    	  	    </td>
    	  	  </tr>
    	  	  <% end %>
@@ -74,6 +74,8 @@
    	 <%= @order.address %>
    	 <%= @order.name %>
    </div>
+
+  <%= form_with(model: @order, local: true) do |f| %>
 
    	<%= f.hidden_field :customer_id, :value => current_customer.id %>
    	<%= f.hidden_field :post_code, :value => "#{@order.post_code}" %>

@@ -3,12 +3,13 @@
 	<h2>注文情報入力</h2>
 
  	<!-- 支払方法 -->
+ 	<%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
 	<div class="row">
-	 <%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
+
 	   <span>支払方法</span><br>
-	   <%= f.radio_button :payment_method, :クレジットカード, checked: "true" %>
+	   <%= f.radio_button :payment_method, :"クレジットカード", checked: "true" %>
 	   <%= f.label :クレジットカード %><br>
-	   <%= f.radio_button :payment_method, :銀行振込 %>
+	   <%= f.radio_button :payment_method, :"銀行振込" %>
 	   <%= f.label :銀行振込 %>
 	</div>
 
@@ -23,15 +24,15 @@
 	   <%= f.label :ご自身の住所 %><br>
 	   <%= @customer.post_code %>
 	   <%= @customer.address %>
-	   <%= @customer.first_name %>
 	   <%= @customer.last_name %>
+	   <%= @customer.first_name %>
     </div>
 
     <!-- 登録済住所 -->
     <div class="row">
 	   <%= f.radio_button :add, 2 %>
 	   <%= f.label :登録済住所 %>
-	   <%= f.collection_select(:shipping_address, @shipping_address) %>
+	   <%= f.select :shipping_address, @current_customer.shipping_addresses %>
 	</div>
 
 	<!-- 新しいお届け先 -->
@@ -40,8 +41,8 @@
 	   <%= f.label :新しいお届け先 %>
 	</div>
 
-	<div class="row">
-	  <div class="col-lg-12">
+
+
 		<%= f.fields_for :new_add do |na| %>
 	    <div class="row">
 	      <div class="col-lg-4">
@@ -70,8 +71,6 @@
 	       </div>
 	    </div>
 	    <% end %>
-	  </div>
-	</div>
 	<!-- お届け先ここまで -->
 
 	<div class="row">

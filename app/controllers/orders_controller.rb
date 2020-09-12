@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
 	  if current_customer.cart_items.exists?
 	  	@order = Order.new(order_params)
 	  	@order.customer_id = current_customer.id
-	  	@shipping_address = @customer.shipping_address
+	  	@shipping_address = @customer.shipping_addresses
 
 	  	# 住所
 	  	@add = params[:order][:add].to_i
@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
 	  	  	@order.name = @customer.name
 	  	  when 2
 	  	  	@order.post_code = params[:order][:post_code]
-	  	  	@order.address = params[:shipping_address][:address]
+	  	  	@order.address = params[:order][:shipping_address]
 	  	  	@order.name = params[:order][:name]
 	  	  when 3
 	  	  	@order.post_code = params[:order][:post_code]
@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
 	  	@order.save
 
 	  	# 住所検索をし、データがなければ新規登録
-	    if ShippingAddress.find_by(address: @order.address).nil?
+	    if ShippingAddress.find_by(shipping_address: @order.address).nil?
 	      @shipping_address = ShippingAddress.new
 	      @shipping_address.post_code = @order.address
 	      @shipping_address.name = @order.name
@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
 	end
 
 	def confirm
-	  @order =Order.new
+	  @order =Order.new(order_params)
 	  @cart_items = current_customer.cart_items
 	  @order.payment_method = params[:order][:payment_method]
 
@@ -66,14 +66,14 @@ class OrdersController < ApplicationController
 	      @order.address = @customer.address
 	      @order.name = @customer.last_name + @customer.first_name
 	    when 2
-	      @reg = params[:order][:address].to_i
+	      @reg = params[:order][:shipping_address].to_i
 	      @address = ShippingAddress.find(@reg)
 	      @order.post_code = @address.post_code
 	      @order.address = @address.address
 	      @order.name = @address.destination
 	    when 3
 	      @order.post_code = params[:order][:new_add][:post_code]
-	      @order.address = params[:order][:new_add][:address]
+	      @order.address = params[:order][:new_add][:shipping_address]
 	      @order.name = params[:order][:new_add][:name]
 	  end
 	end
