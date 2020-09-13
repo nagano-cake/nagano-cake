@@ -1,7 +1,7 @@
 class Admin::CustomersController < ApplicationController
 	# before_action :authenticate_admin!
 	def index
-		@customers = Customer.page(params[:page]).reverse_order
+		@customers = Customer.all
 	end
 
 	def show
@@ -30,7 +30,7 @@ class Admin::CustomersController < ApplicationController
 
 private
  def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :telephone_number, :encrypted_password, :delete_flag)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :post_code, :telephone_number, :encrypted_password, :delete_flag, :address)
   end
 end
 #モデルが決まってから書く

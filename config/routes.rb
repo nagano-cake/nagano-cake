@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
     resources :products, except: [:destroy]
     resources :genres, only: [:create, :index, :edit, :update]
-    resources :order_details, only: [:update]
+    resources :order_informations, only: [:update]
   end
 
   # customers
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   # resource :customers, only:[:update]
   get '/customers/my_page' => 'customers#show'
   get '/customer/edit' => 'customers#edit'
-  patch '/customers' => 'customers#update'
+  patch '/customer' => 'customers#update'
   get '/customers/unsubscribe' => 'customers#unsubscribe'
   patch '/customers/withdraw' => 'customers#withdraw'
   resources :shipping_addresses, except: [:new, :show]

@@ -1,43 +1,61 @@
 <div class="container">
-	 <div class="row">
-	    <div class="col-xs-4">
-	    	<h2>商品詳細</h2>
-	    	<%= attachment_image_tag @product, :image, :fill, 300, 300, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+    <div class="row">
+        <div class="col-xs-4">
+            <h2>商品詳細</h2>
+            <%= attachment_image_tag @product, :image, :fill, 300, 300, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
         </div>
-	    <div class="col-xs-8">
-	    	<table class = table >
-				<tr>
-			        <th><%= "商品名" %></th>
-			        <td><%= @product.name %></td>
-			    </tr>
-			    <tr>
-			        <th><%= "商品紹介" %></th>
-			        <td><%= @product.text %></td>
-			    </tr>
-			    <tr>
-			    	<th><%= "ジャンル" %></th>
-			        <td><%= @product.genre.name %></td>
-			    </tr>
-			    <tr>
-			    	<th><%= "税込価格（税抜き価格）" %></th>
-			        <td><%= ((@product.price * 1.08).round(2)).ceil %>(<%= @product.price %>)</td>
-			    </tr>
-			    <tr>
-			    	<th><%= "販売ステータス" %></th>
-			        <td>
-			        	<% if @product.status == false %>
-			                  <div>販売中</div>
-			                <% else %>
-			                  <div>販売中止</div>
-			            <% end %>
-			        </td>
-			    </tr>
-			</table>
-		</div>
-	</div>
-	<div class="row">
-	    <div class="col-xs-2 col-xs-offset-10">
-	    	<%= link_to "編集する",edit_admin_product_path(@product) %>
-	    </div>
-	</div>
+        <div class="col-xs-8">
+            <table class=table>
+                <tr>
+                    <th>
+                        <%= "商品名" %>
+                    </th>
+                    <td>
+                        <%= @product.name %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <%= "商品紹介" %>
+                    </th>
+                    <td>
+                        <%= @product.text %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <%= "ジャンル" %>
+                    </th>
+                    <td>
+                        <%= @product.genre.name %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <%= "税込価格（税抜き価格）" %>
+                    </th>
+                    <td>
+                        <%= ((@product.price * 1.1).round(2)).ceil %>(
+                        <%= @product.price %>)</td>
+                </tr>
+                <tr>
+                    <th>
+                        <%= "販売ステータス" %>
+                    </th>
+                    <td>
+                        <% if @product.status == true %>
+                        <div>販売中</div>
+                        <% else %>
+                        <div>販売中止</div>
+                        <% end %>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-10">
+            <%= link_to "編集する",edit_admin_product_path(@product) %>
+        </div>
+    </div>
 </div>
