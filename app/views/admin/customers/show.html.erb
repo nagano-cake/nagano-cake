@@ -1,57 +1,86 @@
 <div class="container">
-	 <div class="row">
-	    <div class="col-xs-4 col-xs-offset-2">
-	    	<p><%= @customer.last_name %>
-	    		<%= @customer.first_name %>さんの会員情報編集
-	    	</p>
-	    </div>
-	</div>
-	<div class="row">
-		<div class="col-xs-6 col-xs-offset-2">
-			<table class = table >
-				<tr>
-			        <th><p>顧客ID</p></th>
-			        <td>
-			           <%= @customer.id %>
-			        	<% if @customer.delete_flag == "false" %>
-			                <p >有効会員</p>
-			              <% else %>
-			                <p>退会済み</p>
-			            <% end %>
-			        </td>
-			    </tr>
-			    <tr>
-			        <th><p>氏名</p></th>
-			        <td>
-					    <%= @customer.last_name %><%= @customer.first_name %>
-				    </td>
-			    </tr>
-			    <tr>
-			        <th><p>フリガナ</p></th>
-			        <td>
-				        <%= @customer.last_name_kana %><%= @customer.first_name_kana %>
-			        </td>
-			    </tr>
-			        <th><p>郵便番号</p></th>
-			        <td><%= @customer.post_code %></td>
-			    </tr>
-			    <tr>
-			        <th><p>住所</p></th>
-			        <td><%= @customer.address %></td>
-			    </tr>
-			    <tr>
-			        <th><p>電話番号</p></th>
-			        <td><%= @customer.telephone_number %></td>
-			    </tr>
-			    <tr>
-			        <th><p>メールアドレス</p></th>
-			        <td><%= @customer.email %></td>
-			    </tr>
-			    <tr>
-			    	<th><%= link_to '編集する', edit_admin_customer_path(@customer) %></th>
-			    	<th><%= link_to '注文履歴一覧を見る', admin_customer_path(@customer) %></th>
-			    </tr>
-			</table>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-2">
+            <p>
+                <%= @customer.last_name %>
+                <%= @customer.first_name %>さんの会員情報編集
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-2">
+            <table class=table>
+                <tr>
+                    <th>
+                        <p>顧客ID</p>
+                    </th>
+                    <td>
+                        <%= @customer.id %>
+                        <% if @customer.delete_flag == "false" %>
+                        <p>有効会員</p>
+                        <% else %>
+                        <p>退会済み</p>
+                        <% end %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <p>氏名</p>
+                    </th>
+                    <td>
+                        <%= @customer.last_name %>
+                        <%= @customer.first_name %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <p>フリガナ</p>
+                    </th>
+                    <td>
+                        <%= @customer.last_name_kana %>
+                        <%= @customer.first_name_kana %>
+                    </td>
+                </tr>
+                <th>
+                    <p>郵便番号</p>
+                </th>
+                <td>
+                    <%= @customer.post_code %>
+                </td>
+                </tr>
+                <tr>
+                    <th>
+                        <p>住所</p>
+                    </th>
+                    <td>
+                        <%= @customer.address %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <p>電話番号</p>
+                    </th>
+                    <td>
+                        <%= @customer.telephone_number %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <p>メールアドレス</p>
+                    </th>
+                    <td>
+                        <%= @customer.email %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <%= link_to '編集する', edit_admin_customer_path %>
+                    </th>
+                    <th>
+                        <%= link_to '注文履歴一覧を見る', admin_customers_path %>
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
