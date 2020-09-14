@@ -1,7 +1,7 @@
 <div class="container">
 
-  <div class="row">
-      <h2 class="new-registration">新規会員登録</h2>
+  <div class="row" style="padding-bottom: 10px;">
+      <h2 style="border-bottom: solid 5px #000; width: 190px;">新規会員登録</h2>
   </div>
 
   <div class="row">
@@ -9,46 +9,74 @@
      <%= form_for(resource, as: resource_name, url: customer_registration_path) do |f| %>
        <%= render "customers/shared/error_messages", resource: resource %>
 
-       <div class="form-group">
+       <div class="form-group" style="width: 190px;">
           <%= f.label :名前 %>
-          <%= f.text_field :last_name, class: "form-control" %>
-          <%= f.text_field :first_name, class: "form-control" %>
+          <div style="margin-left: 10px;">
+           <p>
+            (姓)
+            <%= f.text_field :last_name, class: "form-control" %>
+           </p>
+           <p>
+            (名)
+            <%= f.text_field :first_name, class: "form-control" %>
+           </p>
+          </div>
        </div>
 
-       <div class="form-group">
+       <div class="form-group" style="width: 190px;">
           <%= f.label :フリガナ %>
-          <%= f.text_field :last_name_kana, class: "form-control" %>
-          <%= f.text_field :first_name_kana, class: "form-control" %>
+          <div style="margin-left: 10px;">
+           <p>
+            (セイ)
+            <%= f.text_field :last_name_kana, class: "form-control" %>
+           </p>
+           <p>
+            (メイ)
+            <%= f.text_field :first_name_kana, class: "form-control" %>
+           </p>
+          </div>
        </div>
 
-       <div class="form-group">
+       <div class="form-group" style="width: 190px;">
           <%= f.label :メールアドレス %>
+          <div style="margin-left: 10px;">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div>
        </div>
 
-       <div class="form-group">
+       <div class="form-group" style="width: 190px;">
           <%= f.label :郵便番号（ハイフンなし） %>
+          <div style="margin-left: 10px;">
           <%= f.text_field :post_code, class: "form-control" %>
+          </div>
        </div>
 
-       <div class="form-group">
+       <div class="form-group" style="width: 380px;">
           <%= f.label :住所 %>
+          <div style="margin-left: 10px;">
           <%= f.text_field :address, class: "form-control" %>
+          </div>
        </div>
 
-       <div class="form-group">
+       <div class="form-group"  style="width: 190px;">
           <%= f.label :電話番号（ハイフンなし） %>
+          <div style="margin-left: 10px;">
           <%= f.text_field :telephone_number, class: "form-control" %>
+          </div>
        </div>
 
-       <div class="form-group">
+       <div class="form-group"  style="width: 190px;">
           <%= f.label :パスワード（6文字以上） %>
+          <div style="margin-left: 10px;">
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          </div>
        </div>
 
-       <div class="form-group">
+       <div class="form-group"  style="width: 190px;">
           <%= f.label "パスワード(確認用)" %><br />
+          <div style="margin-left: 10px;">
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          </div>
        </div>
 
        <div class="actions">
@@ -58,12 +86,12 @@
     </div>
   </div>
 
-  <div class="row">
-      <h2 class="already-done">既に登録済みの方</h2>
+  <div class="row" style="margin-bottom: 10px;">
+      <h2 class="already-done"  style="border-bottom: solid 5px #000; width: 250px;">既に登録済みの方</h2>
   </div>
 
-  <div class="row">
-      <%= link_to 'こちらからログインしてください。', new_customer_session_path(resource_name) %>
+  <div class="row"  style="margin-left: 10px; font-size: 18px; margin-bottom: 10px;">
+      <%= link_to 'こちら ', new_customer_session_path(resource_name) %>からログインしてください。
   </div>
 
 </div>

@@ -1,16 +1,16 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <nav class='nav navbar-nav navbar-left navbar-white bg-white' >
-      <h2>LOGO</h2>
+      <h2 style="color: white;">NAGANO-CAKE</h2>
     </nav>
-    <nav class="nav-box">
+    <nav>
       <ul class="nav navbar-nav navbar-right navbar-white bg-white">
         <% if customer_signed_in? %>
           　<li>
-             <p class="name">
+             <p style="color: white; margin-right: 40px; margin-top: 15px;">
               ようこそ、
               <%= current_customer.last_name %>
-              さん!
+              さん !
              </p>
             </li>
             <li><%= link_to ' マイページ',customers_my_page_path %></li>
