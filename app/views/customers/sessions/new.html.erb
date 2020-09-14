@@ -1,13 +1,12 @@
-<div class="container">
-  <%= flash[:error] %>
- <div class="row">
-    <span class="log-in">会員の方はこちらからログイン</span>
+<div class="container text-center">
+ <div class="row"   style="margin-bottom: 25px;">
+    <span class="log-in" style="border-bottom: solid 4px #000; width: 200px; font-size: 18px;">会員の方はこちらからログイン</span>
  </div>
 
- <div class="row">
+ <div class="row"  style="margin-bottom: 10px;" >
    <div class="col-5">
      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-       <div class="form-group">
+       <div class="form-group" style="margin-left: 10px;" >
         <%= f.label :メールアドレス %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
        </div>
@@ -17,11 +16,11 @@
         <%= f.password_field :password, autocomplete: "current-password" %>
        </div>
 
-       <div class="row">
+       <div class="row"  style="margin-bottom: 20px;" >
         <%= link_to '=>パスワードを忘れた方はこちら', new_customer_password_path(resource_name) %>
        </div>
 
-       <div class="actions">
+       <div class="actions"  style="margin-bottom: 20px;">
         <%= f.submit "ログイン", class: "btn btn-primary" %>
        </div>
      <% end %>
@@ -33,7 +32,7 @@
  </div>
 
  <div class="row">
-   <%= link_to 'こちらから新規登録を行ってください。', new_customer_registration_path %>
+   <%= link_to 'こちら ', new_customer_registration_path %>から新規登録を行ってください。
  </div>
 
 </div>
