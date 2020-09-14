@@ -1,24 +1,58 @@
-# README
-あ
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# NAGANO CAKE
 
-Things you may want to cover:
+長野県にある小さな洋菓子店『ながのCAKE』の商品を販売するために作られたサイトです！
 
-* Ruby version
+* Ruby version => ・
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+# 開発環境
 
-* Database initialization
+* Ruby 2.5.7
+* Rails 5.2.4.3
+* HTML5
+* CSS3
+* Gem
+  * devise
+  * Bootstrap
+  * jQuery-rails
+  * kaminari
+  * Refile
+  * minimagick
 
-* How to run the test suite
+# 実装機能
 
-* Services (job queues, cache servers, search engines, etc.)
+* Customer
+  * 会員登録、ログイン、編集、退会
+  * 商品閲覧、カートへの追加、商品購入
+  * 注文履歴の確認（一覧、詳細）
 
-* Deployment instructions
+* Admin
+  * 商品・ジャンル登録
+  * 販売・製造のステータス管理
+  * 会員情報管理（確認・編集）
+  * 注文履歴管理（確認・編集）
 
-* ...
+# 新宿坂4
+
+初顔合わせ時に共通点が乃木坂46好きと分かり、このようなチーム名にしました。
+
+* おみ
+  * コントローラー初期設定
+  * ショッピングカート
+  * CSS/レイアウト
+
+* ともゆき
+  * モデル初期設定
+  * 商品一覧/詳細
+  * 配送先
+
+* やまみ
+  * 管理者サイト
+  * ヘッダー・TOP/Aboutページ
+
+* りゅう
+  * ルーティング初期設定
+  * 会員登録/ログイン/マイページ
+  * 注文履歴一覧/詳細
+
