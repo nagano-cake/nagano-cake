@@ -24,9 +24,9 @@ class CustomersController < ApplicationController
 
 	def withdraw
 	  @customer = Customer.find(current_customer.id)
-	  @customer.update(delete_flag: true)
+	  @customer.update(delete_flag: false)
 	  reset_session
-	  redirect_to products_path
+	  redirect_to root_path
 	end
 
 	private

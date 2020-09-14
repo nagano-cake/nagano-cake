@@ -28,7 +28,7 @@
 						</td>
 						<td><%= customer.email %></td>
 						 <td>
-							<% if customer.delete_flag == "有効会員" %>
+							<% if customer.delete_flag == true %>
 			                  <div>有効会員</div>
 			                <% else %>
 			                  <div>退会済み</div>

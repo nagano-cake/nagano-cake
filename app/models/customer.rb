@@ -20,6 +20,10 @@ class Customer < ApplicationRecord
 
   # enum order_status: {入金待ち:0, 入金確認:1, 製作中:2, 発送準備中:3, 発送済み:4 }
 
-  validates :delete_flag, inclusion: {in: [true, false]}
+   def active_for_authentication?
+     super && (self.delete_flag == true)
+   end
+
+  # validates :delete_flag, inclusion: {in: [true, false]}
       #退会ステータス
 end

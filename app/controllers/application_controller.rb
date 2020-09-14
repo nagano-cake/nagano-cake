@@ -22,11 +22,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def after_sign_out_for(resource)
-    if customer_signed_out?
-       new_customer_session_path(resource)
+  def after_sign_out_path_for(resource)
+    if resource == :customer
+       new_customer_session_path
     else
-       admin_session_path(resource)
+       new_admin_session_path
     end
   end
 end
