@@ -42,10 +42,12 @@ class OrdersController < ApplicationController
 	  	# binding.pry
 	  	# 住所検索をし、データがなければ新規登録
 	    # if ShippingAddress.find_by(shipping_address: @order.address).nil?
-	      # @shipping_address = ShippingAddress.new
-	      # @shipping_address.post_code = @order.address
-	      # @shipping_address.name = @order.name
-	      # @shipping_address.customer_id = current_customer.id
+	    @shipping_address = ShippingAddress.new
+	    @shipping_address.post_code = @order.post_code
+	    @shipping_address.address = @order.address
+	    @shipping_address.destination = @order.name
+	    @shipping_address.customer_id = current_customer.id
+	    @shipping_address.save
 	    # end
 
 	    # カートアイテムを注文情報に新規登録

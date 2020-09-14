@@ -59,7 +59,7 @@
        	   <% @order.order_informations.each do |order_information| %>
        	    <tr>
        	      <td><%= order_information.product.name %></td>
-       	      <td><%= order_information.price %></td>
+       	      <td><%= price_include_tax(order_information.price) %></td>
        	      <td><%= order_information.count %></td>
        	      <td><%= price_include_tax(order_information.price).to_i * order_information.count %></td>
        	    </tr>

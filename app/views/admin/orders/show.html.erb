@@ -46,33 +46,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <% sum = 0 %>
-                        <% @order_informations.each do |order_information| %>
+                    <% sum = 0 %>
+                    <% @order_informations.each do |order_information| %>
+                     <tr>
                         <td>
                             <%= order_information.product.name %>
                         </td>
                         <td>
-                            <%= order_information.price %>
+                            <%= price_include_tax(order_information.price) %>
                         </td>
                         <td>
                             <%= order_information.count %>
                         </td>
                         <td>
                             <% shoukei = order_information.price * order_information.count * 1.1 %>
-                            <%= order_information.price * order_information.count * 1.1.to_i %>
+                            <%= price_include_tax(order_information.price).to_i * order_information.count %>
                             <% sum += shoukei %>
                         </td>
+                        <td>
                         <%= form_for order_information, url: admin_order_information_path do |f| %>
-                        <td>
                             <%= f.select :status, OrderInformation.statuses.keys.to_a  %>
-                        </td>
-                        <td>
                             <%= f.submit "更新" %>
+                        <% end %>
                         </td>
-                        <% end %>
-                        <% end %>
-                    </tr>
+                     </tr>
+                    <% end %>
                 </tbody>
             </table>
         </div>
