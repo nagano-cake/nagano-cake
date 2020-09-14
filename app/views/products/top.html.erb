@@ -3,20 +3,20 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="sample">
-                <p>
-                    <span class="welcome">Welcome,NaganoCake</span><br>
+                <h3 class="welcome">
+                    <span>Welcome,NaganoCake</span><br>
                     このサイトは、ケーキ販売のECサイトになります。<br>
                     会員でない方も商品の閲覧はできますが、<br>
                     購入には会員登録が必要になります。<br>
-                </p>
+                </h3>
             </div>
-            <h2 class="recommend">オススメ商品</h2>
-            
+            <h2 class="reco">オススメ商品</h2>
             <!-- ランダムに4つ表示できる？ -->
             <%= render "status", products: @products %>
-            
             <div class="col-xs-12">
+                <p class="more">
                 <%= link_to "もっと見る", products_path, class: "btn-link" %>
+            </p>
             </div>
         </div>
     </div>

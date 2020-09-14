@@ -2,6 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.product-container{
-	display: block;
+.welcome{
+	text-align: center;
+}
+
+.product-container {
+	float: left;
+	margin: 0 60px;
+}
+
+.reco{
+	margin: 40px;
+}
+
+.more{
+	margin-top: 30px;
 }
