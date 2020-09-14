@@ -9,11 +9,11 @@
         <%= product.name %>
     </p>
     <% end %>
-    <% if product.status == false %>
+    <% if product.status == true %>
     <p>¥
         <%= product.price %>
     </p>
-    <% elsif product.status == true %>
+    <% elsif product.status == false %>
     <p class="soldout">売り切れ中</p>
     <% end %>
   <% end %>
